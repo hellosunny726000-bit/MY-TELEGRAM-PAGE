@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROFIT WITH ANUSHKA - Official Telegram Community</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        outfit: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            cyan: '#00F0FF',
+                            blue: '#0088CC',
+                            darkBlue: '#005580',
+                            glow: '#00B2FF',
+                            dark: '#0B0F19',
+                            card: '#121826',
+                            border: '#1F293D'
+                        }
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 2s infinite',
+                        'float': 'float 4s ease-in-out infinite',
+                        'beacon': 'beacon 1.5s cubic-bezier(0, 0, 0.2, 1) infinite',
+                        'shimmer': 'shimmer 2.5s infinite linear',
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%, 100%': { boxShadow: '0 0 20px rgba(0, 180, 255, 0.6), 0 0 40px rgba(0, 180, 255, 0.2)' },
+                            '50%': { boxShadow: '0 0 35px rgba(0, 240, 255, 0.9), 0 0 60px rgba(0, 180, 255, 0.4)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-8px)' },
+                        },
+                        beacon: {
+                            '75%, 100%': { transform: 'scale(2)', opacity: '0' },
+                        },
+                        shimmer: {
+                            '0%': { backgroundPosition: '-200% 0' },
+                            '100%': { backgroundPosition: '200% 0' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #07090e;
+            color: #f3f4f6;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism card effect */
+        .glass-card {
+            background: rgba(18, 24, 38, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card-hover:hover {
+            background: rgba(26, 35, 54, 0.8);
+            border-color: rgba(0, 240, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Glowing ring background behind profile */
+        .avatar-ring {
+            background: linear-gradient(135deg, #00F0FF, #0088CC, #FFD700);
+            padding: 3px;
+            border-radius: 50%;
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.5);
+        }
+
+        /* Shimmer overlay for primary CTA */
+        .shimmer-btn {
+            background: linear-gradient(90deg, #0088CC 0%, #00C3FF 50%, #0088CC 100%);
+            background-size: 200% 100%;
+        }
+
+        /* Gradient text effect */
+        .text-gradient-gold {
+            background: linear-gradient(135deg, #FFF5C0 0%, #FFD700 50%, #FFA500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-gradient-cyan {
+            background: linear-gradient(135deg, #FFFFFF 0%, #00F0FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #07090e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f293d;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between items-center relative selection:bg-brand-cyan selection:text-black">
+
+    <!-- Background Ambient Glow Orbs -->
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-lg h-96 bg-brand-cyan/10 blur-[120px] pointer-events-none rounded-full"></div>
+    <div class="fixed bottom-10 left-10 w-72 h-72 bg-brand-blue/10 blur-[100px] pointer-events-none rounded-full"></div>
+
+    <!-- Main Container -->
+    <main class="w-full max-w-md mx-auto px-4 pt-6 pb-12 flex flex-col items-center relative z-10">
+
+        <!-- Top Status Badges Row -->
+        <div class="w-full flex items-center justify-between gap-2 mb-6">
+            <!-- Official Community Badge -->
+            <div class="flex items-center gap-2 px-3 py-1.5 rounded-full glass-card border border-emerald-500/30 bg-emerald-950/20 text-emerald-400 text-xs font-medium">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-beacon absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <span>Official Telegram Community</span>
+            </div>
+
+            <!-- Verified Badge -->
+            <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full glass-card border border-brand-cyan/30 bg-brand-dark/40 text-brand-cyan text-xs font-semibold">
+                <i class="fa-solid fa-shield-halved text-brand-cyan"></i>
+                <span>Verified</span>
+            </div>
+        </div>
+
+        <!-- Profile Avatar Section -->
+        <div class="relative my-4 group">
+            <div class="avatar-ring animate-float">
+                <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden bg-brand-dark relative">
+                    <!-- Profile Image -->
+                    <img 
+                        src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" 
+                        alt="Anushka - Profit Specialist" 
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        onerror="this.src='https://placehold.co/200x200/0088CC/FFF?text=ANUSHKA'"
+                    />
+                    <!-- Overlay Glow -->
+                    <div class="absolute inset-0 ring-1 ring-inset ring-white/20 rounded-full"></div>
+                </div>
+            </div>
+            <!-- Crown/VIP Badge Floating on Avatar -->
+            <div class="absolute -bottom-1 -right-1 bg-gradient-to-r from-amber-400 to-yellow-600 text-black p-2 rounded-full shadow-lg border-2 border-slate-900 flex items-center justify-center">
+                <i class="fa-solid fa-crown text-xs"></i>
+            </div>
+        </div>
+
+        <!-- Profile Name & Bio Header -->
+        <div class="text-center mt-2 mb-5">
+            <h1 class="text-2xl sm:text-3xl font-extrabold font-outfit tracking-wide flex items-center justify-center gap-2">
+                <span class="text-gradient-cyan">PROFIT WITH ANUSHKA</span>
+                <span class="text-2xl animate-bounce">💰</span>
+            </h1>
+            <p class="text-gray-300 text-sm font-medium mt-1 tracking-wide">
+                Daily Pattern Analysis &amp; Smart Game Strategy Tips
+            </p>
+        </div>
+
+        <!-- Social Proof Counter Card -->
+        <div class="w-full glass-card rounded-2xl p-3.5 mb-5 flex items-center justify-center gap-3 border border-brand-cyan/20 bg-gradient-to-r from-brand-card via-brand-darkBlue/20 to-brand-card shadow-lg">
+            <span class="relative flex h-3 w-3">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-3 w-3 bg-orange-500"></span>
+            </span>
+            <div class="text-sm font-semibold text-gray-200">
+                <span id="liveCounter" class="text-amber-400 font-bold text-base font-outfit">1,480</span> 
+                <span class="text-gray-300">members online right now</span>
+            </div>
+        </div>
+
+        <!-- Benefits & Features List -->
+        <div class="w-full space-y-3 mb-6">
+            <!-- Feature 1 -->
+            <div class="glass-card glass-card-hover rounded-xl p-3.5 flex items-center gap-3.5">
+                <div class="w-9 h-9 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 flex-shrink-0">
+                    <i class="fa-solid fa-circle-check text-lg"></i>
+                </div>
+                <div class="text-sm font-medium text-gray-200 leading-tight">
+                    Free Daily Color &amp; Trend Analysis Updates
+                </div>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="glass-card glass-card-hover rounded-xl p-3.5 flex items-center gap-3.5">
+                <div class="w-9 h-9 rounded-lg bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center text-brand-cyan flex-shrink-0">
+                    <i class="fa-solid fa-bolt text-lg"></i>
+                </div>
+                <div class="text-sm font-medium text-gray-200 leading-tight">
+                    Real-Time Game Signals &amp; Pattern Timings
+                </div>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="glass-card glass-card-hover rounded-xl p-3.5 flex items-center gap-3.5">
+                <div class="w-9 h-9 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 flex-shrink-0">
+                    <i class="fa-solid fa-graduation-cap text-lg"></i>
+                </div>
+                <div class="text-sm font-medium text-gray-200 leading-tight">
+                    100% Beginner Friendly Learning &amp; Strategy
+                </div>
+            </div>
+
+            <!-- Feature 4 -->
+            <div class="glass-card glass-card-hover rounded-xl p-3.5 flex items-center gap-3.5">
+                <div class="w-9 h-9 rounded-lg bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 flex-shrink-0">
+                    <i class="fa-solid fa-rocket text-lg"></i>
+                </div>
+                <div class="text-sm font-medium text-gray-200 leading-tight">
+                    Daily Exclusive High Accuracy Prediction Tips
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Call To Action Button Section -->
+        <div class="w-full flex flex-col items-center gap-2.5 my-2">
+            <a 
+                href="https://t.me/+AMsgMdbdpZs2NGY1" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                id="telegramCtaBtn"
+                class="w-full py-4 px-6 rounded-2xl shimmer-btn text-white font-outfit font-extrabold text-base sm:text-lg tracking-wider flex items-center justify-center gap-3 shadow-2xl animate-pulse-glow transition-all transform active:scale-95 hover:brightness-110"
+            >
+                <i class="fa-brands fa-telegram text-2xl"></i>
+                <span>JOIN TELEGRAM CHANNEL FREE</span>
+                <i class="fa-solid fa-arrow-right text-base animate-pulse"></i>
+            </a>
+
+            <!-- Subtext trust badges -->
+            <div class="flex items-center justify-center gap-2 text-xs font-medium text-gray-400 mt-1">
+                <i class="fa-solid fa-lock text-emerald-400 text-2xs"></i>
+                <span>Free Access</span>
+                <span class="text-gray-600">•</span>
+                <span>No Subscription Required</span>
+            </div>
+        </div>
+
+        <!-- Scroll Down Indicator -->
+        <a href="#strategy-details" class="mt-8 mb-4 flex flex-col items-center gap-1 text-gray-400 text-xs hover:text-brand-cyan transition-colors cursor-pointer">
+            <span class="font-medium">Scroll for strategy details</span>
+            <i class="fa-solid fa-chevron-down text-sm animate-bounce text-brand-cyan"></i>
+        </a>
+
+        <!-- Strategy & Perks Details Section -->
+        <section id="strategy-details" class="w-full pt-8 mt-4 border-t border-gray-800/80">
+            <h2 class="text-center text-lg font-bold font-outfit text-white mb-4 flex items-center justify-center gap-2">
+                <i class="fa-solid fa-chart-line text-brand-cyan"></i>
+                <span>Why Join Our Community?</span>
+            </h2>
+
+            <div class="grid grid-cols-1 gap-3.5">
+                <!-- Card 1 -->
+                <div class="glass-card rounded-2xl p-4 border border-slate-800">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-8 h-8 rounded-full bg-brand-cyan/20 flex items-center justify-center text-brand-cyan font-bold text-sm">
+                            1
+                        </div>
+                        <h3 class="font-bold text-white text-sm">Smart AI Pattern Tracking</h3>
+                    </div>
+                    <p class="text-xs text-gray-300 leading-relaxed pl-11">
+                        We analyze historical trend data using custom algorithmic tools to provide high-probability entry points.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card rounded-2xl p-4 border border-slate-800">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-400 font-bold text-sm">
+                            2
+                        </div>
+                        <h3 class="font-bold text-white text-sm">Risk Management Guidance</h3>
+                    </div>
+                    <p class="text-xs text-gray-300 leading-relaxed pl-11">
+                        Learn proper capital allocation strategies designed to protect your wallet and maximize profits long-term.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card rounded-2xl p-4 border border-slate-800">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 font-bold text-sm">
+                            3
+                        </div>
+                        <h3 class="font-bold text-white text-sm">24/7 Active Trader Squad</h3>
+                    </div>
+                    <p class="text-xs text-gray-300 leading-relaxed pl-11">
+                        Join thousands of like-minded members sharing strategy insights, feedback, and daily winning results.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Secondary CTA inside section -->
+            <div class="mt-6 text-center">
+                <a 
+                    href="https://t.me/+AMsgMdbdpZs2NGY1" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-brand-darkBlue/80 hover:bg-brand-blue border border-brand-cyan/40 text-brand-cyan font-semibold text-sm transition-all shadow-lg hover:shadow-brand-cyan/20"
+                >
+                    <i class="fa-brands fa-telegram text-lg"></i>
+                    <span>Open in Telegram App</span>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full text-center py-6 px-4 border-t border-gray-900 bg-black/40 text-xs text-gray-500 relative z-10">
+        <p>© 2026 Profit With Anushka. All Rights Reserved.</p>
+        <p class="mt-1 text-2xs text-gray-600">Educational &amp; Strategy Community Channel.</p>
+    </footer>
+
+    <!-- Interactive Logic & Dynamic Live Updates -->
+    <script>
+        // Dynamic Live Member Counter Simulation
+        let currentOnline = 1480;
+        const counterElement = document.getElementById('liveCounter');
+
+        function updateCounter() {
+            // Random fluctuation between -3 and +5
+            const change = Math.floor(Math.random() * 9) - 3;
+            currentOnline = Math.max(1420, Math.min(1650, currentOnline + change));
+            
+            if (counterElement) {
+                // Smooth counter text change animation
+                counterElement.style.opacity = '0.5';
+                setTimeout(() => {
+                    counterElement.innerText = currentOnline.toLocaleString();
+                    counterElement.style.opacity = '1';
+                }, 200);
+            }
+            
+            // Repeat every 3-6 seconds
+            const nextTime = Math.floor(Math.random() * 3000) + 3000;
+            setTimeout(updateCounter, nextTime);
+        }
+
+        // Initialize script logic on window load
+        window.onload = function() {
+            setTimeout(updateCounter, 3000);
+
+            // Optional click tracking analytics hook
+            const ctaBtn = document.getElementById('telegramCtaBtn');
+            if (ctaBtn) {
+                ctaBtn.addEventListener('click', function() {
+                    console.log('User redirected to Telegram: https://t.me/+AMsgMdbdpZs2NGY1');
+                });
+            }
+        };
+    </script>
+</body>
+</html>
